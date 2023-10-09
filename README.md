@@ -1,4 +1,4 @@
-# ProjetoFinalProgramacao-Web2 - API Rest Farmácia
+# ProjetoFinalProgramacaoWeb2 - API Rest Farmácia
 
 **Projeto do Módulo de Programação Web II do Curso de Formação Back-End Java | #btgfaztech.**
 
