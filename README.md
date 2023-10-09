@@ -7,7 +7,7 @@
 **-Implementado:**
  - Endpoint de cadastro, leitura, atualização e deleção lógica de funcionário;
  - Endpoint de login;
- - Consulta por CPF do usuário (Para inclusão de CPF válido no sistema, foi utilizador gerador de CPF disponível na internet para testes de software);
+ - Consulta por CPF do usuário (para inclusão de CPF válido no sistema, foi utilizado gerador de CPF, disponível na internet para testes de software);
  - Consulta por salário e filtro por valor mínimo;
  - Cálculo do valor total da Order, sem precisar que o usuário passe o valor.
 
