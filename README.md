@@ -28,5 +28,5 @@ Deve ser inicializado a base de dados para utilização dos endpoints.
 Deve conter autenticação básica utilizando Spring Security
 
 
-## A ser implementado posteriormente:**
+## A ser implementado posteriormente:
 - Classe Cliente;
