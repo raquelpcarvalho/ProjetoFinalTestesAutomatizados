@@ -21,6 +21,10 @@ public class UserConvert {
     }
 
     public static UserResponse toResponse(User user){
+        if (user == null){
+            throw new IllegalArgumentException("nao encontrado");
+        }
+
         UserResponse userResponse = new UserResponse();
         userResponse.setId(user.getId());
         userResponse.setName(user.getName());
