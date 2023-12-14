@@ -42,6 +42,8 @@ public class UserService {
 
         user.setActive(true);
 
+        validateEmailUnique(user.getEmail());
+
         if (!Validator.passwordValidate(user.getPassword())) throw new PasswordValidationError("Senha deve seguir o padrao");
 
         User userEntity = userRepository.save(user);
@@ -81,6 +83,12 @@ public class UserService {
 
     public UserResponse getUserByCpf(String userCpf){
         return UserConvert.toResponse(userRepository.findUserByCpf(userCpf));
+    }
+
+    private void validateEmailUnique(String email) {
+        if (userRepository.existsByEmail(email)) {
+            throw new RuntimeException("E-mail já registrado");
+        }
     }
 
 
