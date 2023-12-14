@@ -27,27 +27,27 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/user")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/user")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/user")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/login")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/user")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/type-product")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/type-product")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/product")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/product")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/order")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/order")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/employee")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/employee")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/employee")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/employee")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/employee/searchBySalary")).permitAll()
-
-//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/user")).hasRole("ADMIN")
-                        .anyRequest().authenticated())
+//                .authorizeHttpRequests((requests) -> requests
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/user")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/user")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/user")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/login")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/user")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/type-product")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/type-product")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/product")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/product")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/order")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/order")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/employee")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/employee")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/employee")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/employee")).permitAll()
+//                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/employee/searchBySalary")).permitAll()
+//
+////                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/user")).hasRole("ADMIN")
+//                        .anyRequest().authenticated())
                 .build();
     }
 
