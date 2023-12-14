@@ -12,6 +12,7 @@ import com.ada.ProjetoFinalProgramacaoWeb2.utils.ProductConvert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -24,7 +25,11 @@ public class ProductService {
     TypeProductRepository typeProductRepository;
 
     public ProductResponse saveProduct(ProductRequest productRequest){
-        TypeProduct typeProduct = typeProductRepository.findById(productRequest.getTypeId()).get();
+        if (productRequest.getPrice().compareTo(BigDecimal.ZERO) < 0){
+            throw new IllegalArgumentException("O preço deve ser maior que 0");
+        }
+
+        TypeProduct typeProduct = typeProductRepository.findById(productRequest.getTypeId()).orElseThrow(()-> new IllegalArgumentException("Tipo de produto não encontrado"));
         Product product = ProductConvert.toEntity(productRequest, typeProduct);
         return ProductConvert.toResponse(productRepository.save(product));
     }
