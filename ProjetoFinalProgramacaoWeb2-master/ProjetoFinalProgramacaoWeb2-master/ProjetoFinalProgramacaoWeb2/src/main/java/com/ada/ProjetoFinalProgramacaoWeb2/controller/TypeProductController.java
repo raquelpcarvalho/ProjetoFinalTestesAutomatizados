@@ -23,7 +23,7 @@ public class TypeProductController {
     }
 
     @PostMapping
-    public ResponseEntity<TypeProductResponse> saveTypeProduct(@RequestBody TypeProductRequest typeProductRequest   ){ //@RequestBody informa que os dados virão do "body" da requisição
+    public ResponseEntity<TypeProductResponse> saveTypeProduct(@RequestBody TypeProductRequest typeProductRequest   ){
         TypeProductResponse typeProductResponse = typeProductService.saveTypeProduct(typeProductRequest);
         return ResponseEntity.created(URI.create("/type-product/"+typeProductResponse.getId())).body(typeProductResponse);
     }
