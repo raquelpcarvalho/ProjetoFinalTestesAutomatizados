@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -33,14 +34,26 @@ public class OrderService {
     ProductRepository productRepository;
 
     public OrderResponse saveOrder(OrderRequest orderRequest){
+        if (orderRequest == null){
+            throw new IllegalArgumentException("OrderRequest não pode ser nulo");
+        }
+
         User user = userRepository.findById(orderRequest.getUserId()).get();
 
         List<Product> products = new ArrayList<>();
         List<Integer> productsId = orderRequest.getProductsIds();
 
         for(Integer id: productsId){
-            Product product = productRepository.findById(id).get();
+            Optional<Product> productOptional = productRepository.findById(id);
+            if(productOptional.isEmpty()){
+                throw new IllegalArgumentException("ID do produto inválido: " + id);
+            }
+            Product product = productOptional.get();
             products.add(product);
+        }
+
+        if (products.isEmpty() || products.size() > 50){
+            throw new IllegalArgumentException("A quantidade de produtos no pedido deve estar entre 1 e 50");
         }
 
         Order order = OrderConvert.toEntity(orderRequest, user, products);
