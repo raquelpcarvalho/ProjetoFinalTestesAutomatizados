@@ -19,7 +19,6 @@ public class UserRequest {
 
     private String password;
 
-    @CPF
     private String cpf;
 
 
