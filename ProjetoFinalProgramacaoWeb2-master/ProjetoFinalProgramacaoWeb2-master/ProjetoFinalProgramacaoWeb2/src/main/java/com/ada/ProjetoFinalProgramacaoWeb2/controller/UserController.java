@@ -3,7 +3,6 @@ package com.ada.ProjetoFinalProgramacaoWeb2.controller;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.UserRequest;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.UserResponse;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.exception.PasswordValidationError;
-import com.ada.ProjetoFinalProgramacaoWeb2.model.User;
 import com.ada.ProjetoFinalProgramacaoWeb2.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +67,7 @@ public class UserController {
 
     @GetMapping("/cpf/{cpf}")
     public ResponseEntity<UserResponse> getUserByCpf(@PathVariable String cpf){
-        return ResponseEntity.ok(userService.getUserByCpf(cpf));
+        return ResponseEntity.ok(userService.findUserByCpf(cpf));
     }
 
 

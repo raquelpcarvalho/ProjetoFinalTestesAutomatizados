@@ -21,11 +21,15 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public Page<UserResponse> getUsers(int page, int size, String direction){
         PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.fromString(direction), "name");
@@ -80,10 +84,16 @@ public class UserService {
         return UserConvert.toResponse(userRepository.save(user));
     }
 
+    public UserResponse findUserByCpf(String userCpf){
+        //return UserConvert.toResponse(userRepository.findUserByCpf(userCpf));
+        UserResponse found = null;
+        if(userCpf != null){
+            found = UserConvert.toResponse(userRepository.findUserByCpf(userCpf));
+        }
+        return found;
 
-    public UserResponse getUserByCpf(String userCpf){
-        return UserConvert.toResponse(userRepository.findUserByCpf(userCpf));
     }
+
 
     private void validateEmailUnique(String email) {
         if (userRepository.existsByEmail(email)) {
