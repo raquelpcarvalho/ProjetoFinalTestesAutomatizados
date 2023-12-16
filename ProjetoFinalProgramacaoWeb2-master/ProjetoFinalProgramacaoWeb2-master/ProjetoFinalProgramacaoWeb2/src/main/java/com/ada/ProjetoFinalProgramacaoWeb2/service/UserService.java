@@ -51,7 +51,7 @@ public class UserService {
         return UserConvert.toResponse(userEntity);
     }
 
-    public UserResponse getUserById(Integer id){
+    public UserResponse findUserById(Integer id){
         Optional<User> userResponse =  userRepository.findById(id);
         if(userResponse.isPresent()){
             return UserConvert.toResponse(userResponse.get());
