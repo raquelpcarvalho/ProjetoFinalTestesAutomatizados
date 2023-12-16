@@ -1,11 +1,15 @@
 package com.ada.ProjetoFinalProgramacaoWeb2.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "products")
 @Getter @Setter
