@@ -23,8 +23,8 @@ public class ProductService {
     TypeProductRepository typeProductRepository;
 
     public ProductResponse saveProduct(ProductRequest productRequest){
-        if (productRequest.getPrice().compareTo(BigDecimal.ZERO) < 0){
-            throw new IllegalArgumentException("O preço deve ser maior que 0");
+        if (productRequest.getPrice().compareTo(BigDecimal.ONE) < 1){
+            throw new IllegalArgumentException("O preço deve ser maior que 1");
         }
 
         TypeProduct typeProduct = typeProductRepository.findById(productRequest.getTypeId()).orElseThrow(()-> new IllegalArgumentException("Tipo de produto não encontrado"));

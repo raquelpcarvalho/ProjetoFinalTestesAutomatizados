@@ -54,4 +54,18 @@ public class ProductServiceUnitTest {
         Assertions.assertNotNull(productResponse);
     }
 
+    @Test
+    public void saving_product_cheaper_than_um_real_exception(){
+        TypeProduct typeProduct = new TypeProduct();
+        typeProduct.setId(1);
+        Mockito.when(typeProductRepository.findById(typeProduct.getId())).thenReturn(Optional.of(typeProduct));
+
+        ProductRequest productRequest = new ProductRequest(product.getName(), BigDecimal.ZERO, typeProduct.getId());
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            productService.saveProduct(productRequest);
+        });
+
+    }
+
 }
