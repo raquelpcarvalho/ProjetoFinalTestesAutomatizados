@@ -9,4 +9,10 @@ import java.util.List;
 public class OrderRequest {
     private Integer userId;
     private List<Integer> productsIds;
+
+    public void setUserId(Integer id) {
+    }
+
+    public void setProductsIds(List<Integer> productIds) {
+    }
 }
