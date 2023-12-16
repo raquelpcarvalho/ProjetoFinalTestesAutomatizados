@@ -14,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.*;
@@ -45,6 +47,15 @@ public class UserServiceUnitTest {
 
         Assertions.assertNotNull(userResponse);
 
+    }
+
+    @Test
+    public void find_user_by_cpf_nonexistent(){
+        Mockito.when(userRepository.findUserByCpf("unit-test")).thenReturn(user);
+
+        UserResponse userResponse = userService.findUserByCpf("unit-test");
+
+        Assertions.assertNotNull(userResponse);
     }
 
     @Test
