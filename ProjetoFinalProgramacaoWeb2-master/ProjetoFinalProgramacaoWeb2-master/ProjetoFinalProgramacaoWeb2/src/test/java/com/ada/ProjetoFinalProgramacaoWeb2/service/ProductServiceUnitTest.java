@@ -43,33 +43,15 @@ public class ProductServiceUnitTest {
     public void save_product(){
 
         TypeProduct typeProduct = new TypeProduct();
-        typeProduct.setId(1); // ID do tipo de produto
+        typeProduct.setId(1);
         Mockito.when(typeProductRepository.findById(typeProduct.getId())).thenReturn(Optional.of(typeProduct));
 
-        // Configuração do produto e sua conversão
         ProductRequest productRequest = new ProductRequest(product.getName(), product.getPrice(), typeProduct.getId());
         Mockito.when(productRepository.save(any(Product.class))).thenReturn(product);
 
-        // Execução do método a ser testado
         ProductResponse productResponse = productService.saveProduct(productRequest);
 
         Assertions.assertNotNull(productResponse);
-
-
-        /*
-        ProductRequest productRequest = new ProductRequest(product.getName(),product.getPrice(), product.getType().getId());
-
-        Mockito.when(productRepository.save(any(Product.class))).thenReturn(product);
-
-        ProductResponse productResponse = productService.saveProduct(productRequest);
-
-        Mockito.verify(productRepository,Mockito.times(1)).save(any(Product.class));
-
-        Assertions.assertNotNull(productResponse);
-         */
-
-
-
     }
 
 }
