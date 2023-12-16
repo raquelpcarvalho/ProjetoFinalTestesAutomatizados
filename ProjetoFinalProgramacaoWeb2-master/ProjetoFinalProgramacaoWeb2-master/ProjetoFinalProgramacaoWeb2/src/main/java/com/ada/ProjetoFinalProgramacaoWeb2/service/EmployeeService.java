@@ -19,11 +19,16 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
-    @Autowired
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
+
+
+    private UserRepository userRepository;
 
     @Autowired
-    UserRepository userRepository;
+    public EmployeeService(EmployeeRepository employeeRepository, UserRepository userRepository) {
+        this.employeeRepository = employeeRepository;
+        this.userRepository = userRepository;
+    }
 
     public EmployeeResponse saveEmployee(EmployeeRequest employeeRequest){
         User user = userRepository.findById(employeeRequest.getUserId()).get();
