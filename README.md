@@ -22,4 +22,4 @@ Possui endpoint de cadastro, leitura, atualização e deleção de usuário.
 - **Banco de Dados:** H2
 - **Junit**, **Mockito**, **MockMvc**, **RestAssure**, **Cucumber** e **Gherkin**
 
-**Testes end-to-end** - repositório: [[https://github.com/raquelpcarvalho/ProjetoFinalTestesAutomatizados_test](https://github.com/raquelpcarvalho/ProjetoFinalTestesAutomatizados_test)]
+**Testes end-to-end** - repositório: [[https://github.com/raquelpcarvalho/ProjetoFinalTestesAutomatizados-test](https://github.com/raquelpcarvalho/ProjetoFinalTestesAutomatizados-test)]
