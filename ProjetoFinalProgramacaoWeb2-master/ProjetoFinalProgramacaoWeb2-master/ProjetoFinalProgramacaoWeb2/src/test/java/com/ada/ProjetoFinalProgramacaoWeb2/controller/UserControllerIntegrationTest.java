@@ -1,6 +1,7 @@
 package com.ada.ProjetoFinalProgramacaoWeb2.controller;
 
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.UserResponse;
+import com.ada.ProjetoFinalProgramacaoWeb2.controller.exception.UserNotFoundException;
 import com.ada.ProjetoFinalProgramacaoWeb2.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -23,7 +24,7 @@ public class UserControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @Test
-    public void busca_user_por_email_ok() throws Exception{
+    public void find_user_by_email_ok() throws Exception{
         String email = "exemplo@email.com";
 
         UserResponse userResponse = new UserResponse();
@@ -39,7 +40,17 @@ public class UserControllerIntegrationTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Usuário Exemplo"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.email").value(email));
+    }
 
+    @Test
+    public void find_user_by_email_exception() throws Exception {
+        String email = "exemplo@email.com";
 
+        Mockito.when(userService.findUserByEmail(Mockito.eq(email)))
+                .thenThrow(new UserNotFoundException("Usuário não encontrado"));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/email/{email}", email))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(MockMvcResultMatchers.content().string("Usuário não encontrado"));
     }
 }

@@ -1,6 +1,7 @@
 package com.ada.ProjetoFinalProgramacaoWeb2.controller.configuration;
 
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.exception.PasswordValidationError;
+import com.ada.ProjetoFinalProgramacaoWeb2.controller.exception.UserNotFoundException;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.exception.ValidationError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -40,6 +41,12 @@ public class ControllerAdvice {
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(PasswordValidationError.class)
     public String handlerPassword(PasswordValidationError exception){
+        return exception.getDescription();
+    }
+
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(UserNotFoundException.class)
+    public String handlerUserNotFound(UserNotFoundException exception){
         return exception.getDescription();
     }
 }

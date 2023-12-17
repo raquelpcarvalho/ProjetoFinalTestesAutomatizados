@@ -3,6 +3,7 @@ package com.ada.ProjetoFinalProgramacaoWeb2.service;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.UserRequest;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.UserResponse;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.exception.PasswordValidationError;
+import com.ada.ProjetoFinalProgramacaoWeb2.controller.exception.UserNotFoundException;
 import com.ada.ProjetoFinalProgramacaoWeb2.model.User;
 import com.ada.ProjetoFinalProgramacaoWeb2.repository.UserRepository;
 import com.ada.ProjetoFinalProgramacaoWeb2.utils.UserConvert;
@@ -60,8 +61,16 @@ public class UserService {
         }
     }
 
-    public UserResponse findUserByEmail(String email){
-        return UserConvert.toResponse(userRepository.findByEmail(email));
+    public UserResponse findUserByEmail(String email) throws UserNotFoundException {
+        Optional<User> userResponse = Optional.ofNullable(userRepository.findByEmail(email));
+        if(userResponse.isPresent()){
+            return UserConvert.toResponse(userResponse.get());
+        } else {
+            throw new UserNotFoundException("Usuário não encontrado");
+        }
+
+        //return UserConvert.toResponse(userRepository.findByEmail(email));
+
     }
 
     public List<UserResponse> getAllByName(String name){
