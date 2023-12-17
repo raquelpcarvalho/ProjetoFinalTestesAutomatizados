@@ -37,7 +37,7 @@ public class ProductControllerIntegrationTest {
 
     /*
     @Test
-    public void SaveProduct() throws Exception {
+    public void saveProduct() throws Exception {
 
         TypeProduct typeProduct = new TypeProduct();
         typeProduct.setId(1);
