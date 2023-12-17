@@ -1,10 +1,10 @@
 package com.ada.ProjetoFinalProgramacaoWeb2.controller;
 
-import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.OrderResponse;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.ProductRequest;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.ProductResponse;
 import com.ada.ProjetoFinalProgramacaoWeb2.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +26,19 @@ public class ProductController {
     }
 
     @PostMapping
+    @ResponseStatus((HttpStatus.CREATED))
     public ResponseEntity<ProductResponse> saveProduct(@RequestBody ProductRequest productRequest){
-        ProductResponse productResponse =  productService.saveProduct(productRequest);
-        return ResponseEntity.created(URI.create("/product/"+productResponse.getId())).body(productResponse);
+        ResponseEntity<ProductResponse> responseEntity = ResponseEntity.status(HttpStatus.CREATED)
+                .body(productService.saveProduct(productRequest));
+
+        // Verifica se a resposta não é nula antes de acessar seu ID
+        if (responseEntity.getBody() != null) {
+            Integer productId = responseEntity.getBody().getId();
+        }
+
+        return responseEntity;
+
+//        ProductResponse productResponse =  productService.saveProduct(productRequest);
+//        return ResponseEntity.created(URI.create("/product/"+productResponse.getId())).body(productResponse);
     }
 }
