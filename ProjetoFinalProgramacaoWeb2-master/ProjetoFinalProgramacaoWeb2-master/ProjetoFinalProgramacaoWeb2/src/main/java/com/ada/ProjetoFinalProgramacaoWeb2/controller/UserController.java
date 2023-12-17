@@ -3,10 +3,13 @@ package com.ada.ProjetoFinalProgramacaoWeb2.controller;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.UserRequest;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.dto.UserResponse;
 import com.ada.ProjetoFinalProgramacaoWeb2.controller.exception.PasswordValidationError;
+import com.ada.ProjetoFinalProgramacaoWeb2.controller.exception.UserNotFoundException;
+import com.ada.ProjetoFinalProgramacaoWeb2.model.User;
 import com.ada.ProjetoFinalProgramacaoWeb2.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,7 +58,13 @@ public class UserController {
     }
 
     @GetMapping("/email/{email}")
-    public ResponseEntity<UserResponse> getUserByEmail(@PathVariable String email){
+    public ResponseEntity<UserResponse> getUserByEmail(@PathVariable String email) throws UserNotFoundException {
+//        try {
+//            return ResponseEntity.ok(userService.findUserByEmail(email));
+//        } catch (UserNotFoundException ex) {
+//            throw ex; // Deixe a exceção ser tratada globalmente pelo manipulador apropriado
+//        }
+
         return ResponseEntity.ok(userService.findUserByEmail(email));
     }
 
