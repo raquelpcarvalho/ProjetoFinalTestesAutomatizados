@@ -1,32 +1,25 @@
-# Projeto Final de Programação Web 2 - API Rest Farmácia
+# API Rest Farmácia - Projeto Final de Testes Automatizados I
 
-**Projeto do Módulo de Programação Web II do Curso de Formação Back-End Java | #btgfaztech.**
+## Sobre
 
-**Objetivo da API:** Simular o sistema de uma Farmácia, contendo: Usuário (User), Funcionário (Employee), Pedido (Order), Produto (Product) e tipo do produto (TypeProduct).
+O Projeto foi desenvolvido sendo parte do módulo "Testes Automatizados I" do Curso de Formação Back-End Java | #btgfaztech.
 
-**-Implementado:**
- - Endpoint de cadastro, leitura, atualização e deleção lógica de funcionário;
- - Endpoint de login;
- - Consulta por CPF do usuário (para inclusão de CPF válido no sistema, foi utilizado gerador de CPF, disponível na internet para testes de software);
- - Consulta por salário e filtro por valor mínimo;
- - Cálculo do valor total da Order, sem precisar que o usuário passe o valor.
+Conforme orientação, foi utilizado como base o projeto do módulo "Programação Web 2", para a realização de Testes.
+
+**Objetivo da API:** Simular o sistema de uma Farmácia, contendo: Usuário (User), Pedido (Order), Produto (Product) e tipo do produto (TypeProduct).
+Possui endpoint de cadastro, leitura, atualização e deleção de usuário.
 
 
-## INFORMAÇÕES SOBRE O PROJETO
-O projeto foi orientado pela Professora Cinthia Queiroz, implementado em aula, para conclusão pela turma.
-
-Foi solicitado uma API REST utilizando Spring Boot. O projeto era de tema livre, mas, devia conter alguns requisitos:
 **Requisitos:**
-Um endpoint de cadastro, leitura, atualização e deleção (lógica ou física) de usuário que será usado no login da aplicação
-Endpoints de buscas que recebem filtros opcionais e realizam consultas na camada de dados (de acordo com o tema do projeto).
-
-**Requisitos Não Funcionais:**
-Deve ser uma aplicação Spring Boot
-Utilização do banco de dados H2
-Linguagem Java 11 - 17
-Deve ser inicializado a base de dados para utilização dos endpoints.
-Deve conter autenticação básica utilizando Spring Security
+- Desenvolva os testes unitários para todas as classe lógicas do sistema. Será necessário o uso de JUnit + Spring.
+- Desenvolva os testes de integração/componentes para as classes de repositório e web. Será necessário o uso de JUnit + Spring.
+- Desenvolva ao menos 2 cenários de testes end-to-end. Esses cenários devem contemplar o uso da aplicação passando por todas as classes, com conexão no banco de dados. Será necessário o uso do Cucumber e Rest Assured.
 
 
-## A ser implementado posteriormente:
-- Classe Cliente;
+## Conhecimentos aplicados
+- **Linguagem de Programação:** Java
+- **Framework:** Spring Boot
+- **Banco de Dados:** H2
+- **Junit**, **Mockito**, **MockMvc**, **RestAssure**, **Cucumber** e **Gherkin**
+
+**Testes end-to-end** - repositório: [https://github.com/raquelpcarvalho](https://github.com/raquelpcarvalho)
