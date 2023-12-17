@@ -31,7 +31,6 @@ public class ProductController {
         ResponseEntity<ProductResponse> responseEntity = ResponseEntity.status(HttpStatus.CREATED)
                 .body(productService.saveProduct(productRequest));
 
-        // Verifica se a resposta não é nula antes de acessar seu ID
         if (responseEntity.getBody() != null) {
             Integer productId = responseEntity.getBody().getId();
         }

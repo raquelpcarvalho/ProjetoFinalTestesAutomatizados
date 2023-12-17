@@ -62,7 +62,7 @@ public class UserController {
 //        try {
 //            return ResponseEntity.ok(userService.findUserByEmail(email));
 //        } catch (UserNotFoundException ex) {
-//            throw ex; // Deixe a exceção ser tratada globalmente pelo manipulador apropriado
+//            throw ex;
 //        }
 
         return ResponseEntity.ok(userService.findUserByEmail(email));

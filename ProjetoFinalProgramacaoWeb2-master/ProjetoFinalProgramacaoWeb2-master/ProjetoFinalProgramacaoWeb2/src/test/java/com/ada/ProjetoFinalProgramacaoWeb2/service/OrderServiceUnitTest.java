@@ -55,16 +55,16 @@ public class OrderServiceUnitTest {
 
     @Test
     public void save_order_with_invalid_userId() {
-        // Configurando o pedido de teste com ID de usuário inválido
-        OrderRequest orderRequest = new OrderRequest();
-        orderRequest.setUserId(null);  // Defina um ID de usuário inválido
 
-        // Executando o método a ser testado e esperando uma exceção
+        OrderRequest orderRequest = new OrderRequest();
+        orderRequest.setUserId(null);
+
+
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             orderService.saveOrder(orderRequest);
         });
 
-        // Verificações
+
         Mockito.verify(userRepository, Mockito.never()).findById(any(Integer.class));
         Mockito.verify(productRepository, Mockito.never()).findById(any(Integer.class));
         Mockito.verify(orderRepository, Mockito.never()).save(any(Order.class));

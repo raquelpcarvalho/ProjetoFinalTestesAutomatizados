@@ -28,10 +28,5 @@ public class Product {
     @ManyToOne
     private TypeProduct type;
 
-//    @Column(name = "description", nullable = false)
-//    private String description;
 
-
-//    @Column(name = "barcode", nullable = false)
-//    private String barcode;
 }
