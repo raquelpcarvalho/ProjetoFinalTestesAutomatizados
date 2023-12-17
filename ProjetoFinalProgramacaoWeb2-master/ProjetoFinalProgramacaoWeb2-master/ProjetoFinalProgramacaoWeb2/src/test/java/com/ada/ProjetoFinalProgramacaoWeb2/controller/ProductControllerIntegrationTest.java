@@ -80,7 +80,7 @@ public class ProductControllerIntegrationTest {
         mockMvc.perform(post("/product")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(productJson))
-                .andExpect(status().isBadRequest()); // Espera uma resposta com status de BadRequest (400)
+                .andExpect(status().isBadRequest());
     }
      */
 

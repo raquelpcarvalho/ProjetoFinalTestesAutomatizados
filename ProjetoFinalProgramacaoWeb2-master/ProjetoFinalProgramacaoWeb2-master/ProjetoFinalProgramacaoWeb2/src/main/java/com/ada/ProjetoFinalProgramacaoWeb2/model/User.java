@@ -76,15 +76,5 @@ public class User implements UserDetails {
         return true;
     }
 
-    //@Column(name = "birthDate", nullable = false)
-    //private LocalDate birthDate;
-
-
-
-    //@Column(name = "telephone", nullable = false)
-    //private String telephone;
-
-    //private String role; /// Cliente não terá tipos. Em funcionário, serão dois perfis: vendedor, farmacêutico verificar se é melhor usar typeUser
-
 
 }
