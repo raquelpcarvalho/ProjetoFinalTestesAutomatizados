@@ -23,11 +23,17 @@ public class ProductService {
     TypeProductRepository typeProductRepository;
 
     public ProductResponse saveProduct(ProductRequest productRequest){
+        if (productRequest.getPrice() == null) {
+            throw new IllegalArgumentException("O preço não pode ser nulo");
+        }
+
         if (productRequest.getPrice().compareTo(BigDecimal.ONE) < 1){
             throw new IllegalArgumentException("O preço deve ser maior que 1");
         }
 
-        TypeProduct typeProduct = typeProductRepository.findById(productRequest.getTypeId()).orElseThrow(()-> new IllegalArgumentException("Tipo de produto não encontrado"));
+        TypeProduct typeProduct = typeProductRepository.findById(productRequest.getTypeId())
+                .orElseThrow(() -> new IllegalArgumentException("Tipo de produto não encontrado"));
+
         Product product = ProductConvert.toEntity(productRequest, typeProduct);
         return ProductConvert.toResponse(productRepository.save(product));
     }

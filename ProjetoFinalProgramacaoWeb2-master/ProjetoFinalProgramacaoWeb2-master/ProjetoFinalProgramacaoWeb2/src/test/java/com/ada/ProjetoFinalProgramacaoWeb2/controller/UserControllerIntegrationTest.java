@@ -114,16 +114,12 @@ public class UserControllerIntegrationTest {
 
     @Test
     public void delete_user() throws Exception {
-        // Defina o ID do usuário a ser excluído
         int userId = 1;
 
-        // Simule o serviço para excluir um usuário
         Mockito.doNothing().when(userService).deleteUser(Mockito.eq(userId));
 
-        // Realize a requisição DELETE ao endpoint /user/{id}
         mockMvc.perform(MockMvcRequestBuilders.delete("/user/{id}", userId)
                         .contentType(MediaType.APPLICATION_JSON))
-                // Verifique se o status da resposta é NO_CONTENT (204), indicando exclusão bem-sucedida
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(""));
 
