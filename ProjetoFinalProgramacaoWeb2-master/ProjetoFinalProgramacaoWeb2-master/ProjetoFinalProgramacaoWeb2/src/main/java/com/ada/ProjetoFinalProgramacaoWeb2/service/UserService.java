@@ -60,7 +60,7 @@ public class UserService {
         }
     }
 
-    public UserResponse getUserByEmail(String email){
+    public UserResponse findUserByEmail(String email){
         return UserConvert.toResponse(userRepository.findByEmail(email));
     }
 

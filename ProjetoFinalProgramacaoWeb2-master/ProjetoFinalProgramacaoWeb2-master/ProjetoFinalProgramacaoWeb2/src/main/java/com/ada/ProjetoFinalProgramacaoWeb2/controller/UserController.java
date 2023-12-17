@@ -56,7 +56,7 @@ public class UserController {
 
     @GetMapping("/email/{email}")
     public ResponseEntity<UserResponse> getUserByEmail(@PathVariable String email){
-        return ResponseEntity.ok(userService.getUserByEmail(email));
+        return ResponseEntity.ok(userService.findUserByEmail(email));
     }
 
     @GetMapping("/name/{name}")
@@ -84,6 +84,5 @@ public class UserController {
     ){
         return  ResponseEntity.ok(userService.updateUser(id, userRequest));
     }
-
 
 }
