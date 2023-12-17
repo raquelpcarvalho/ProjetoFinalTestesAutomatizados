@@ -26,7 +26,7 @@ public class ProductController {
     }
 
     @PostMapping
-    @ResponseStatus((HttpStatus.CREATED))
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ProductResponse> saveProduct(@RequestBody ProductRequest productRequest){
         ResponseEntity<ProductResponse> responseEntity = ResponseEntity.status(HttpStatus.CREATED)
                 .body(productService.saveProduct(productRequest));
