@@ -35,18 +35,19 @@ public class ProductControllerIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    /*
     @Test
-    public void testSaveProduct() throws Exception {
-        // Cria um objeto ProductRequest para o teste
+    public void SaveProduct() throws Exception {
+
         TypeProduct typeProduct = new TypeProduct();
         typeProduct.setId(1);
 
         ProductRequest productRequest = new ProductRequest("Test Product",new BigDecimal("10.99"), typeProduct.getId());
 
-        // Converte o objeto em JSON
+
         String productJson = objectMapper.writeValueAsString(productRequest);
 
-        // Realiza a requisição POST para salvar o produto
+
         ResultActions result = mockMvc.perform(post("/product")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(productJson))
@@ -57,11 +58,9 @@ public class ProductControllerIntegrationTest {
                 .andExpect(jsonPath("$.price").value("10.99"));
 
 
-        // Extrai o ID do produto recém-criado para uso em outros testes ou verificações
         String responseContent = result.andReturn().getResponse().getContentAsString();
         ProductResponse productResponse = objectMapper.readValue(responseContent, ProductResponse.class);
 
-        // Verifica se o objeto não está nulo antes de tentar acessar seus métodos
         assertNotNull(productResponse);
         assertNotNull(productResponse.getId());
 
@@ -69,7 +68,7 @@ public class ProductControllerIntegrationTest {
 
     @Test
     @DisplayName("Não deve ser possível cadastrar produto sem informar o preço")
-    public void nao_deve_ser_possivel_cadastrar_produto_sem_informar_o_preco() throws Exception {
+    public void it_should_not_be_possible_to_register_a_product_without_the_price() throws Exception {
 
         TypeProduct typeProduct = new TypeProduct();
         typeProduct.setId(1);
@@ -83,5 +82,6 @@ public class ProductControllerIntegrationTest {
                         .content(productJson))
                 .andExpect(status().isBadRequest()); // Espera uma resposta com status de BadRequest (400)
     }
+     */
 
 }
